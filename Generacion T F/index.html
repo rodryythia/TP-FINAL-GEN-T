@@ -1,0 +1,115 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Juegos Clásicos Arcade</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="blur-header">
+    <h1>🎮 Juegos Clásicos 🎮</h1>
+  </header>
+
+  <section class="intro">
+    <h3>Reviví la nostalgia de los juegos más emblemáticos dentro de esta máquina arcade. Elegí uno y jugá como en los viejos tiempos.</h3>
+  </section>
+
+  <main class="juegos">
+    <div class="juego" data-juego="tateti">
+      <img src="tatetigame.jpg" alt="Tateti">
+      <h2>Tateti</h2>
+    </div>
+    <div class="juego" data-juego="buscaminas">
+      <img src="buscaminasgame.jpg" alt="Buscaminas">
+      <h2>Buscaminas</h2>
+    </div>
+    <div class="juego" data-juego="snake">
+      <img src="snakegame.jpg" alt="Snake">
+      <h2>Snake</h2>
+    </div>
+    <div class="juego" data-juego="pingpong">
+      <img src="pingpong.jpg" alt="Ping Pong">
+      <h2>Ping Pong</h2>
+    </div>
+    <div class="juego" data-juego="flappybird">
+      <img src="pajaritovolando.jpg" alt="flappybird">
+      <h2>Flappy Bird</h2>
+    </div>
+  </main>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+  <!-- 🎮 Estructura de la máquina arcade -->
+  <div class="arcade">
+    <div class="arcade-top">
+      <h2>CARGANDO...</h2>
+    </div>
+    <div class="arcade-screen">
+      <div id="area-juego"></div>
+    </div>
+    <div class="arcade-panel">
+      <div class="joystick"></div>
+      <div class="buttons">
+        <div class="btn red"></div>
+        <div class="btn yellow"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="tateti.js"></script>
+  <script src="buscaminas.js"></script>
+  <script src="snake.js"></script>
+  <script src="pingpong.js"></script>
+  <script src="flappybird.js"></script>
+
+  <script>
+  document.querySelectorAll('.juego').forEach(j => {
+    j.addEventListener('click', () => {
+      const tipo = j.getAttribute('data-juego');
+      const areaJuego = document.getElementById('area-juego');
+      areaJuego.innerHTML = "";
+
+      if (tipo === 'tateti' && typeof cargarTateti === "function") cargarTateti();
+      if (tipo === 'buscaminas' && typeof cargarBuscaminas === "function") cargarBuscaminas();
+      if (tipo === 'snake' && typeof cargarSnake === "function") cargarSnake();
+      if (tipo === "pingpong" && typeof cargarPingPong === "function") cargarPingPong();
+      if (tipo === 'flappybird' && typeof cargarFlappyBird === "function") cargarFlappyBird();
+
+
+      document.querySelector('.arcade').scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
+
+  window.addEventListener("scroll", () => {
+    const header = document.querySelector(".blur-header");
+    if (window.scrollY > 100) {
+      header.style.opacity = "0";
+      header.style.transform = "translateY(-100%)";
+    } else {
+      header.style.opacity = "1";
+      header.style.transform = "translateY(0)";
+    }
+  });
+  </script>
+</body>
+</html>
+
+
+
